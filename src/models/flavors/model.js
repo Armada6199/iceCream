@@ -1,4 +1,4 @@
-module.exports=(sequelize,DataTypes)=>sequelize.define('flavors',{
+module.exports=(sequelize,DataTypes)=>sequelize.define('food',{
     brand:{
         type:DataTypes.STRING,
         required:true

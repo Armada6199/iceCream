@@ -1,16 +1,19 @@
 const modelMiddleware=require('../middleware/model');
+const acl=require("../middleware/acl");
+const barer=require('../middleware/bearer');
 const express=require('express');
 const router=express.Router();
-router.param('model',modelMiddleware);
-router.get('/:models',modelMiddleware,handleGetAll);
-router.get('/:models/:id',modelMiddleware,handleGetOne);
-router.post('/:models',modelMiddleware,handleCreate);
-router.put('/:model/:id',modelMiddleware,handleUpdate);
-router.delete('/:model/:id',modelMiddleware,handleDelete);
+router.param('models',modelMiddleware);
+router.get('/:models',barer,handleGetAll);
+router.get('/:models/:id',barer,handleGetOne);
+router.post('/:models',barer,acl('create'),handleCreate);
+router.put('/:models/:id',barer,acl('update'),handleUpdate);
+router.delete('/:models/:id',barer,acl('delete'),handleDelete);
+
 async function handleGetAll(req,res,next){
     try {
         let allRecords=await req.model.get();
-    res.status(200).send(allRecords);
+        res.status(200).send(allRecords);
     } catch (error) {
         next(error);
     }
@@ -52,4 +55,5 @@ async function handleDelete(req,res,next){
         next(error);
     }
 }
+
 module.exports=router;
