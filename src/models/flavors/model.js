@@ -1,0 +1,11 @@
+module.exports=(sequelize,DataTypes)=>sequelize.define('flavors',{
+    brand:{
+        type:DataTypes.STRING,
+        required:true
+    },
+    color:{
+        type:DataTypes.STRING,
+        required:false,
+        defaultValue:"Black"
+    }
+});
