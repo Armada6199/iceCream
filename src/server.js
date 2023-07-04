@@ -9,8 +9,7 @@ const cors = require('cors');
 const errorHandler = require('./error-handlers/500.js');
 const notFound = require('./error-handlers/404.js');
 const authRoutes = require('./auth/routes.js');
-const v1=require('./auth/routes/v1.js');
-const v2=require('./auth/routes/v2.js');
+const dynamicRoute=require('./auth/routes/dynamicRoute.js');
 // Prepare the express app
 const app = express();
 
@@ -22,8 +21,7 @@ app.use(express.urlencoded({ extended: true }));
 
 // Routes
 app.use(authRoutes);
-app.use('/api/v1',v1)
-app.use('/api/v2',v2)
+app.use('/',dynamicRoute)
 
 // Catchalls
 app.use(notFound);
@@ -33,7 +31,7 @@ module.exports = {
   server: app,
   start: (port) => {
     app.listen(port, () => {
-      console.log(`Server Up on ${port}`);
+      console.log(`Server Running on  ${port}`);
     });
   },
 };

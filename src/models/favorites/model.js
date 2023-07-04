@@ -1,5 +1,5 @@
-module.exports=(sequelize,DataTypes)=>sequelize.define('clothes',{
-    catagory:{
+module.exports=(sequelize,DataTypes)=>sequelize.define('favorites',{
+    flavores:{
         type:DataTypes.STRING,
         required:true
     },
@@ -7,4 +7,4 @@ module.exports=(sequelize,DataTypes)=>sequelize.define('clothes',{
         type:DataTypes.INTEGER,
         required:false,
     }
-})
+});
