@@ -31,7 +31,7 @@ async function handleCreate(req,res,next){
     const body=req.body;
     try {
         let record=await req.model.create(body);
-        res.status(200).send(record);
+        res.status(201).send(record);
     } catch (error) {
         next(error);
     }
@@ -41,7 +41,7 @@ async function handleUpdate(req,res,next){
     const id=req.params.id;
     try {
         let record=await req.model.update(id,body);
-        res.status(200).send(record);
+        res.status(202).send(record);
     } catch (error) {
         next(error);
     }
@@ -50,7 +50,7 @@ async function handleDelete(req,res,next){
     const id=req.params.id;
     try {
         let record=await req.model.delete(id);
-        res.status(200).send(record);
+        res.status(204).send(record);
     } catch (error) {
         next(error);
     }
