@@ -1,4 +1,4 @@
-const modelMiddleware=require('../auth/middleware/model');
+const modelMiddleware=require('../auth/middleware/modelsMiddleware');
 const acl=require("../auth/middleware/acl");
 const barer=require('../auth/middleware/bearer');
 const express=require('express');
