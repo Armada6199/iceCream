@@ -1,6 +1,6 @@
-const modelMiddleware=require('../middleware/model');
-const acl=require("../middleware/acl");
-const barer=require('../middleware/bearer');
+const modelMiddleware=require('../auth/middleware/model');
+const acl=require("../auth/middleware/acl");
+const barer=require('../auth/middleware/bearer');
 const express=require('express');
 const router=express.Router();
 router.param('models',modelMiddleware);
@@ -21,7 +21,7 @@ async function handleGetAll(req,res,next){
 async function handleGetOne(req,res,next){
     const id=req.params.id;
     try {
-        let record=await req.model.get(id);
+        let record=await req.model.get(id,true);
         res.status(200).send(record);
     } catch (error) {
         next(error);
@@ -30,8 +30,9 @@ async function handleGetOne(req,res,next){
 async function handleCreate(req,res,next){
     const body=req.body;
     try {
+        console.log(req.body)
         let record=await req.model.create(body);
-        res.status(201).send(record);
+        res.status(200).send(record);
     } catch (error) {
         next(error);
     }
@@ -41,7 +42,7 @@ async function handleUpdate(req,res,next){
     const id=req.params.id;
     try {
         let record=await req.model.update(id,body);
-        res.status(202).send(record);
+        res.status(200).send(record);
     } catch (error) {
         next(error);
     }
@@ -50,7 +51,7 @@ async function handleDelete(req,res,next){
     const id=req.params.id;
     try {
         let record=await req.model.delete(id);
-        res.status(204).send(record);
+       res.status(202).end();
     } catch (error) {
         next(error);
     }

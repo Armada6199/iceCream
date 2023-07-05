@@ -1,11 +1,11 @@
-module.exports=(sequelize,DataTypes)=>sequelize.define('food',{
-    brand:{
+module.exports=(sequelize,DataTypes)=>sequelize.define('flavors',{
+    name:{
         type:DataTypes.STRING,
         required:true
     },
-    color:{
-        type:DataTypes.STRING,
+    ingredients:{
+        type: { type: DataTypes.ARRAY(DataTypes.TEXT), defaultValue: [] },
         required:false,
-        defaultValue:"Black"
+        defaultValue:['milk']
     }
 });

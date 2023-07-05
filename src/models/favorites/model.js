@@ -1,10 +1,6 @@
 module.exports=(sequelize,DataTypes)=>sequelize.define('favorites',{
-    flavores:{
+    name:{
         type:DataTypes.STRING,
         required:true
     },
-    calories:{
-        type:DataTypes.INTEGER,
-        required:false,
-    }
 });
