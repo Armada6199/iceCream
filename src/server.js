@@ -8,8 +8,8 @@ const cors = require('cors');
 // Esoteric Resources
 const errorHandler = require('./error-handlers/500.js');
 const notFound = require('./error-handlers/404.js');
-const authRoutes = require('./auth/routes.js');
-const dynamicRoute=require('./auth/routes/dynamicRoute.js');
+const authRoutes = require('./auth/auth.js');
+const dynamicRoute=require('./routes/dynamicRoute.js');
 // Prepare the express app
 const app = express();
 
@@ -20,8 +20,11 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 // Routes
+app.get('/',(req,res)=>{
+  res.send('one home page')
+})
 app.use(authRoutes);
-app.use('/',dynamicRoute)
+app.use(dynamicRoute);
 
 // Catchalls
 app.use(notFound);

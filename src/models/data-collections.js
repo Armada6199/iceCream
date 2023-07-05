@@ -2,7 +2,11 @@ class Collection {
     constructor(model){
         this.model=model
     }
-    get(id){
+    get(id,onFavs=false){
+        if(onFavs){
+            console.log('on favsfffffffffffffffffffffffffffffffffffffffff')
+            return this.model.findAll({ where:{UserId:id}})
+        }
         if(id) return this.model.findOne({id});
         return this.model.findAll({});
     }
@@ -14,7 +18,7 @@ class Collection {
         return this.model.findOne({where:{id}}).then(record=>record.update(data))
  }
     delete(id){
-        return this.model.destroy({where:id})
+        return this.model.destroy({where:{id}})
  }
 }
 module.exports=Collection

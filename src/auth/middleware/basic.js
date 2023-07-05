@@ -9,11 +9,11 @@ module.exports = async (req, res, next) => {
 
   let basic = req.headers.authorization.split(' ').pop();
   let [user, pass] = base64.decode(basic).split(':');
-console.log(user,pass)
   try {
     req.user = await users.model.authenticateBasic(user, pass)
     next();
   } catch (e) {
+    console.log(e)
     _authError()
   }
 
