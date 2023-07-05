@@ -19,3 +19,12 @@
 ### UML
 
 ![UML](./assets//uml.png)
+
+
+### DEPLOED LINK
+<https://icecream-p70i.onrender.com/>
+
+### PRS
+<https://github.com/Armada6199/iceCream/pull/1>
+<https://github.com/Armada6199/iceCream/pull/3>
+<https://github.com/Armada6199/iceCream/pull/2>
