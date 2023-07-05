@@ -8,7 +8,7 @@ const flavores=require('./flavors/model');
 const users=require('../auth/models/users');
 const Collection=require('./data-collections');
 const favoritesModel=favorites(sequelize,DataTypes);
-const flavoresModel=flavores(sequelize,DataTypes);
+const flavorersModel=flavorers(sequelize,DataTypes);
 const userModel=users(sequelize,DataTypes);
 userModel.hasMany(favoritesModel);
 favoritesModel.belongsTo(userModel);
