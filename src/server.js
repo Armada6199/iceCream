@@ -21,7 +21,7 @@ app.use(express.urlencoded({ extended: true }));
 
 // Routes
 app.use(authRoutes);
-app.use('/',dynamicRoute)
+app.use(dynamicRoute)
 
 // Catchalls
 app.use(notFound);
